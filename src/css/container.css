@@ -12,20 +12,22 @@
   max-width: 1280px;
   row-gap: 24px;
   column-gap: 24px;
-  list-style-type: none;
+
   margin: auto;
-  padding: 100px 0;
+  /* padding: 100px 0; */
 }
-/* .gallery-item {
+.gallery-item {
   max-width: 360px;
-  max-height: 200px;
-} */
+  /* max-height: 200px; */
+}
 .gallery-image:hover {
   cursor: url(../img/cursor.png), pointer;
 }
-.image-modal {
+.sl-wrapper .sl-image img {
   border-radius: 30px;
-  border: solid lightblue;
+}
+.sl-caption {
+  border-radius: 0 0 30px 30px;
 }
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {

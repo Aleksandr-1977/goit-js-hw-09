@@ -1,3 +1,5 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 const images = [
   {
     preview:
@@ -63,70 +65,22 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-const gallery = document.querySelector('ul');
+const gallery = document.querySelector('ul.gallery');
 const galleryNew = images
   .map(
-    elem =>
+    ({ preview, original, description }) =>
       `<li class="gallery-item">
-     <a class="gallery-link" href="${elem.original}"> 
-      <img class="gallery-image" src="${elem.preview}" alt ="${elem.description}"
-      data-source="${elem.original}" width= "360" height="200"/>
-      </a>
+        <a class="gallery-link" href="${original}">
+          <img class="gallery-image" src="${preview}" alt="${description}" />
+        </a>
       </li>`
   )
   .join('');
 gallery.insertAdjacentHTML('afterbegin', galleryNew);
 const itemPicture = document.querySelector('.gallery');
-let currentImageIndex = null;
-let modalWindow = null;
-
-itemPicture.addEventListener('click', function (event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const galleryCard = event.target.closest('.gallery-image');
-  const linkCard = galleryCard.dataset.source;
-  currentImageIndex = images.findIndex(image => image.original === linkCard);
-
-  modalWindow = basicLightbox.create(
-    `
-    <img class="image-modal" src="${linkCard}" />`,
-    {
-      className: 'modal',
-      onShow: () => {
-        window.addEventListener('keydown', onKeyPress);
-      },
-      onClose: () => {
-        window.removeEventListener('keydown', onKeyPress);
-      },
-    }
-  );
-  modalWindow.show();
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+  // className: 'modal',
 });
-
-function onKeyPress(event) {
-  if (currentImageIndex === null) return;
-
-  if (event.key === 'ArrowRight') {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    updateModalImage();
-  } else if (event.key === 'ArrowLeft') {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    updateModalImage();
-  } else if (event.key === 'Escape') {
-    if (modalWindow && modalWindow.visible()) {
-      modalWindow.close();
-    }
-  }
-}
-
-function updateModalImage() {
-  const newImage = images[currentImageIndex].original;
-
-  const modalImage = document.querySelector('.image-modal');
-  if (modalImage) {
-    modalImage.src = newImage;
-  }
-}
