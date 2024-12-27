@@ -1,4 +1,5 @@
 /* Styles for Mobile devices */
+@import 'simplelightbox/dist/simple-lightbox.min.css';
 .container {
   min-width: 320px;
   max-width: 375px;
@@ -25,9 +26,11 @@
 }
 .sl-wrapper .sl-image img {
   border-radius: 30px;
+  border: 5px solid lightblue;
 }
 .sl-caption {
   border-radius: 0 0 30px 30px;
+  border: 2px solid lightblue;
 }
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
