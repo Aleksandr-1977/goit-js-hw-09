@@ -5,7 +5,7 @@ let formData = {
 };
 const fillForm = () => {
   try {
-    if (localStorage.length === 0) {
+    if (formDataFromLS === null) {
       return;
     }
     const formDataFromLS = JSON.parse(
