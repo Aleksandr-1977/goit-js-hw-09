@@ -22,7 +22,7 @@
   /* max-height: 200px; */
 }
 .gallery-image:hover {
-  cursor: url(../img/cursor.png), pointer;
+  cursor: url(/img/cursor.png), pointer;
 }
 .sl-wrapper .sl-image img {
   border-radius: 30px;
