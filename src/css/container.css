@@ -56,4 +56,13 @@
   align-items: flex-start;
   margin-bottom: 10px;
 }
+.form-field-email {
+  border: 1px solid gray;
+  border-radius: 30px;
+  height: 30px;
+  padding-left: 10px;
+}
+.form-field-textarea {
+  resize: none;
+}
 /* ===========/Form=============== */
