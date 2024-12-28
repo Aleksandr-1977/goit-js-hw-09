@@ -38,7 +38,6 @@ const onFeedbackSubmit = event => {
   console.log(formData);
   event.target.reset();
   localStorage.removeItem('feedback-form-state');
-  //   formData = { email: '', message: '' };
 };
 input.addEventListener('input', onFormField);
 input.addEventListener('submit', onFeedbackSubmit);
