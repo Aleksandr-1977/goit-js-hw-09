@@ -5,12 +5,12 @@ let formData = {
 };
 const fillForm = () => {
   try {
-    if (formDataFromLS === null) {
-      return;
-    }
     const formDataFromLS = JSON.parse(
       localStorage.getItem('feedback-form-state')
     );
+    if (formDataFromLS === null) {
+      return;
+    }
     formData = formDataFromLS;
     for (const key in formDataFromLS) {
       input.elements[key].value = formDataFromLS[key];
